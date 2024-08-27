@@ -1,0 +1,81 @@
+body {
+   background: linear-gradient(200deg, #091428, #182a50);
+   background-attachment: fixed;
+   color: white;
+   text-shadow: 2px 2px 3px rgb(0, 0, 0);
+   text-align: center;
+   font-family: "Montserrat", sans-serif;
+   font-optical-sizing: auto;
+   font-weight: <weight>;
+   font-style: normal;
+}
+
+p {
+   text-shadow: 2px 2px 2px rgb(0, 0, 0);
+   position: relative;
+   animation: moveAndFade 3s forwards;
+}
+
+@keyframes moveAndFade {
+   from {
+      size: 0;
+      opacity: 0;
+   }
+   to {
+      size: 2;
+      opacity: 1;
+   }
+}
+
+#greet {
+   position: relative;
+}
+
+#Profile {
+   max-width: 1000px;
+   margin: 0%;
+   align-content: center;
+   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+}
+
+#OPGG {
+   background: linear-gradient(100deg, #005a82, #0ac8b9);
+   padding: 5px;
+   max-width: 1000px;
+   margin: 0%;
+   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+   margin-bottom: 40px;
+   transition: all 0.3s ease;
+}
+
+#OPGG:hover {
+   transform: scale(1.05);
+   padding: 10px;
+   background: linear-gradient(300deg, #005a82, #0ac8b9);
+}
+
+#OPGG:active {
+   transform: scale(1.1);
+   transition: all 0.2s ease;
+}
+
+button {
+   font-family: "Montserrat", sans-serif;
+   font-size: large;
+   background: linear-gradient(180deg, #005a82, #0ac8b9);
+   border-radius: 30%;
+   border: none;
+   padding: 10px;
+   cursor: pointer;
+   margin-top: 30px;
+   transition: all 0.2s ease;
+}
+button:hover {
+   background: linear-gradient(100deg, #99d2eb, #0ac8b9);
+   padding: 18px;
+   border-radius: 30%;
+}
+button:active {
+   transform: scale(1.1);
+   transition: all 0.2s ease;
+}
