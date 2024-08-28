@@ -8,15 +8,27 @@
       <link rel="icon" type="image/png" href="Image/Sett Icon.png" />
    </head>
    <body>
-      <button type="button" onclick="document.getElementById('greet').innerHTML = 'Welcome!' ">Say Hi</button>
-      <h1 id="greet"></h1>
+      <!-- <div>
+         <button onclick="Greet()">Hi</button>
+         <script src="Scripts/Welcome.js"></script>
+      </div> -->
+
+      <div>
+         <p id="msg">Hi, type your name!</p>
+         <p id="textHere"></p>
+         <input id="nameInput" placeholder="Nickname" />
+         <button id="submit">Magic</button>
+         <p id="error"></p>
+         <script src="Scripts/Display Name.js"></script>
+      </div>
 
       <img id="Profile" src="Image/Lol Profile.png" alt="Profile Picture" />
 
-      <p>Click to see my OP.GG!</p>
+      <p>Click to see my</p>
+      <p><b>OP.GG!</b></p>
 
       <a href="https://www.op.gg/summoners/euw/XANDER-BLADE" target="_blank">
-         <img id="OPGG" src="Image/OPGG.jpg" alt="OPGG" />
+         <img id="OPGG" src="Image/OPGG.jpg" alt="OPGG.Profile" />
       </a>
    </body>
 </html>
