@@ -24,7 +24,7 @@ b {
 }
 
 #error {
-   font-size: 20px;
+   font-size: 18px;
    margin-top: 10px;
    margin-bottom: 10px;
    color: #ffffff;
@@ -60,8 +60,17 @@ input:hover {
    margin-top: auto;
    align-content: center;
    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
-}
+   transition: all 0.3s ease;
 
+}
+#Profile:hover {
+   max-width: 1050px;
+   margin-top: auto;
+   align-content: center;
+   box-shadow: 0 10px 8px rgba(0, 0, 0, 0.2);
+   transition: all 0.3s ease;
+
+}
 #OPGG {
    background: linear-gradient(100deg, #005a82, #0ac8b9);
    padding: 5px;
@@ -95,10 +104,9 @@ button {
 }
 button:hover {
    background: linear-gradient(100deg, #99d2eb, #0ac8b9);
-   padding: 10px;
+   padding: 8px;
    border-radius: 13px;
 }
 button:active {
    transform: scale(1.1);
    transition: all 0.2s ease;
-}
