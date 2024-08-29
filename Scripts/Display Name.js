@@ -27,7 +27,7 @@ document.getElementById("submit").onclick = function () {
       document.getElementById("msg").textContent = "";
       document.getElementById("error").textContent = "Names can't be numbers!";
    } else {
-      document.getElementById("error").textContent = "Type your name for magic!";
+      document.getElementById("error").textContent = "Please enter a name!";
       document.getElementById("textHere").textContent = "";
       document.getElementById("msg").textContent = "";
    }
