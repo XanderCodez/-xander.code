@@ -1,5 +1,4 @@
 let coolName = document.getElementById("textHere");
-
 let upCheckBtn = document.getElementById("UpperCheck");
 let BoldcheckBtn = document.getElementById("BoldCheck");
 

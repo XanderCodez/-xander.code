@@ -1,41 +1,42 @@
 body {
-   background: linear-gradient(200deg, #091428, #182a50);
-   background-attachment: fixed;
-   color: white;
-   text-shadow: 2px 2px 3px rgb(0, 0, 0);
+   background-color: #202124;
+   color: #e8eaed;
+   direction: ltr;
+   font-family: "Roboto", arial, sans-serif;
+   font-size: 15px;
+   margin: 0;
+   min-width: 360px;
+   overflow-x: hidden;
+   overflow-y: auto;
+   padding: 10;
    text-align: center;
-   font-family: "Montserrat", sans-serif;
-   font-optical-sizing: auto;
-   font-weight: <weight>;
-   font-style: normal;
+}
+div {
+   margin-top: 30px;
+   margin-bottom: 30px;
 }
 
 p {
-   text-shadow: 2px 2px 2px rgb(0, 0, 0);
-   font-size: 30px;
+   text-shadow: 2px 2px 2px rgb(20, 20, 20);
+   font-size: 50px;
    margin-bottom: 15px;
    margin-top: 15px;
-}
-
-b {
-   font-size: 30px;
-   color: #3faffa;
-   text-shadow: 0px 2px 4px rgb(0, 0, 0);
 }
 
 #error {
    font-size: 18px;
    margin-top: 10px;
    margin-bottom: 10px;
-   color: #ffffff;
+   color: #b3b3b3;
 }
+
 input {
-   color: #ffffff;
-   background-color: #1b325e;
+   color: #e6e6e6;
+   background-color: #2c2c2c;
    border: none;
    border-radius: 10px;
    padding: 10px;
-   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3);
    transition: all 0.2s ease;
    margin-bottom: 10px;
 }
@@ -48,71 +49,47 @@ input:hover {
 
 #textHere {
    font-size: 50px;
-   color: #8bcce6;
-   text-shadow: 0px 2px 4px rgb(0, 0, 0);
+   color: #9bb1b3;
+   text-shadow: 0px 2px 4px rgb(0, 20, 0);
    font-weight: normal;
    margin-bottom: 15px;
    margin-top: 15px;
    letter-spacing: 2px;
-
+   max-height: 100px;
 }
 
-#Profile {
-   max-width: 1000px;
+.Logo {
+   max-width: 100px;
+   max-height: fit-content;
    margin-top: auto;
    align-content: center;
-   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
    transition: all 0.3s ease;
-
 }
-#Profile:hover {
-   max-width: 1050px;
-   margin-top: auto;
+
+.Logo:hover {
+   max-width: 110px;
    align-content: center;
-   box-shadow: 0 10px 8px rgba(0, 0, 0, 0.2);
    transition: all 0.3s ease;
-
-}
-#OPGG {
-   background: linear-gradient(100deg, #005a82, #0ac8b9);
-   padding: 5px;
-   max-width: 1000px;
-   margin: 0%;
-   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
-   margin-bottom: 40px;
-   transition: all 0.3s ease;
-}
-
-#OPGG:hover {
-   transform: scale(1.05);
-   padding: 10px;
-   background: linear-gradient(300deg, #005a82, #0ac8b9);
-}
-
-#OPGG:active {
-   transform: scale(1.1);
-   transition: all 0.2s ease;
 }
 
 button {
    font-family: "Montserrat", sans-serif;
-   font-size: large;
-   background: linear-gradient(180deg, #005a82, #0ac8b9);
+   font-size: larger;
+   background-color: #7c7c7c;
    border-radius: 10px;
    border: none;
    padding: 5px;
    cursor: pointer;
    transition: all 0.2s ease;
+   margin-top: 20px;
+   color: #ffffff;
 }
+
 button:hover {
-   background: linear-gradient(100deg, #99d2eb, #0ac8b9);
-   padding: 8px;
-   border-radius: 13px;
+   background: linear-gradient(100deg, #4d4d4d, #5c5c5c);
 }
+
 button:active {
    transform: scale(1.1);
    transition: all 0.2s ease;
-#numInput {
-   color:#3faffa
-
 }
