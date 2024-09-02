@@ -1,10 +1,10 @@
 document.getElementById("submit").onclick = function () {
    let coolName = document.getElementById("nameInput").value.trim();
+
    if (coolName && !/^[0-9]+$/.test(coolName)) {
       document.getElementById("textHere").textContent = ` ${coolName}`;
       document.getElementById("msg").textContent = "Welcome!";
       document.getElementById("error").textContent = "";
-
       let size = 50;
       document.getElementById("increase").onclick = function () {
          size += 5;
