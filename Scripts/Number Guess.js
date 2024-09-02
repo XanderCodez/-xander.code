@@ -2,7 +2,7 @@ document.getElementById("start").onclick = function () {
    const minNum = prompt("add min number");
    const maxNum = prompt("add max number");
 
-   let answer = Math.floor(Math.random() * (maxNum - minNum + 1));
+   let answer = Math.floor(Math.random() * (maxNum - minNum + 1) + minNum);
    let trys = 0;
    let running = true;
 
