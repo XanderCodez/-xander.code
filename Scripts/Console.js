@@ -1,5 +1,12 @@
-let food = ["Pasta", "Vegies", "Chicken"];
+// hello(bye);
 
-for (i = 0; i < food.length; i++) {
-   console.log(food[i]);
-}
+// function hello(callback) {
+//    setTimeout(function () {
+//       console.log("hey");
+//       callback();
+//    }, 2000);
+// }
+
+// function bye() {
+//    console.log("bye");
+// }

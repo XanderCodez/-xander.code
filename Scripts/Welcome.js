@@ -3,6 +3,6 @@ function Greet() {
    if (name != null && name.trim()) {
       alert(`Welcome, ${name}🫡`);
    } else {
-      alert("Welcome anyway 🙂 ");
+      alert("Welcome anyway 🙂");
    }
 }
