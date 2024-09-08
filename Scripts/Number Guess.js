@@ -35,6 +35,7 @@ document.getElementById("start").onclick = () => {
                let score = document.getElementById("score");
                document.getElementById("counter").textContent = `Tries: ${tries}`;
                document.getElementById("counter2").textContent = `Between ${minNum} to ${maxNum} `;
+               document.getElementById("gameCanceled").textContent = "";
                Running = false;
                if (tries === 1) {
                   score.textContent = "IQ Level: 200📈";
