@@ -1,11 +1,5 @@
-document.getElementById("start").onclick = function () {
-   let minNum = window.prompt("Add minimum value").trim();
-
-   let scoreboard = {
-      triesDisplay: document.getElementById("counter"),
-      rangeDisplay: document.getElementById("counter2"),
-      score: document.getElementById("score")
-   };
+document.getElementById("start").onclick = () => {
+   let minNum = window.prompt("Add minimum value");
 
    let tries = 0;
    let answer;
@@ -20,10 +14,10 @@ document.getElementById("start").onclick = function () {
             running = false;
          } else {
             answer = Math.floor(Math.random() * (maxNum - minNum + 1) + minNum);
-            running = true;
+            Running = true;
          }
       }
-      while (running) {
+      while (Running) {
          let guess = window.prompt(`Geuss a number between ${minNum} - ${maxNum}🤔`).trim();
          guess = Number(guess);
          if (isNaN(guess)) {
@@ -38,17 +32,18 @@ document.getElementById("start").onclick = function () {
             } else if (guess > answer) {
                alert("a bit lower⬇️");
             } else {
-               scoreboard.triesDisplay.textContent = `Tries: ${tries}`;
-               scoreboard.rangeDisplay.textContent = `Between ${minNum} to ${maxNum} `;
-               running = false;
+               let score = document.getElementById("score");
+               document.getElementById("counter").textContent = `Tries: ${tries}`;
+               document.getElementById("counter2").textContent = `Between ${minNum} to ${maxNum} `;
+               Running = false;
                if (tries === 1) {
-                  scoreboard.score.textContent = "IQ Level: 200📈";
+                  score.textContent = "IQ Level: 200📈";
                   alert(`Wow😮, you guessed it correctly on the first try!`);
                } else if (5 >= tries) {
-                  scoreboard.score.textContent = "IQ Level: 100🤓";
+                  score.textContent = "IQ Level: 100🤓";
                   alert(`${answer} is correct✅, it took you only ${tries} tries, thats fast💨!`);
                } else {
-                  scoreboard.score.textContent = "IQ Level: XD";
+                  score.textContent = "IQ Level: XD";
                   alert(`${answer} is the Number, it took you ${tries} times`);
                }
             }
@@ -56,6 +51,10 @@ document.getElementById("start").onclick = function () {
       }
    } else {
       alert("Game canceld, try again⚠️");
-      running = false;
+      document.getElementById("gameCanceled").textContent = "Game Failed";
+      document.getElementById("counter").textContent = "";
+      document.getElementById("counter2").textContent = "";
+      score.textContent = "";
+      Running = false;
    }
 };
