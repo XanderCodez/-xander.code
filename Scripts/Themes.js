@@ -1,11 +1,6 @@
-let darkBtn = document.getElementById("darkTheme");
-let lightBtn = document.getElementById("lightTheme");
-let themeSheet = document.getElementById("ThemeStyles");
-
-darkBtn.onclick = () => {
-   themeSheet.setAttribute("href", "Styles/Style-Dark.css");
+document.getElementById("darkTheme").onclick = () => {
+   document.getElementById("ThemeStyles").setAttribute("href", "Styles/Style-Dark.css");
 };
-
-lightBtn.onclick = () => {
-   themeSheet.setAttribute("href", "Styles/Style-Light.css");
+document.getElementById("lightTheme").onclick = () => {
+   document.getElementById("ThemeStyles").setAttribute("href", "Styles/Style-Light.css");
 };

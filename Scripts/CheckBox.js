@@ -1,8 +1,6 @@
 let coolName = document.getElementById("textHere");
-let upCheckBtn = document.getElementById("UpperCheck");
-let BoldcheckBtn = document.getElementById("BoldCheck");
 
-upCheckBtn.onclick = () => {
+document.getElementById("UpperCheck").onclick = () => {
    if (upCheckBtn.checked) {
       coolName.textContent = coolName.textContent.toLocaleUpperCase();
    } else {
@@ -10,7 +8,7 @@ upCheckBtn.onclick = () => {
    }
 };
 
-BoldcheckBtn.onclick = () => {
+document.getElementById("BoldCheck").onclick = () => {
    if (BoldcheckBtn.checked) {
       coolName.style.fontWeight = "Bolder";
    } else {
