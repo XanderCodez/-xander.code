@@ -37,24 +37,31 @@
       </div>
       <br />
 
-      <!--! <script src="Scripts/Console.js"></script> -->
-
       <div class="Box">
          <h1>CrackCode🔢</h1>
          <p2 class="LightText">Set your range below, and let's see if you can beat the odds🧐</p2> <br />
          <br />
-         <button id="start">Click to play!🎮</button><br /><br />
-         <h2 id="IqLevel"></h2>
-         <h2 id="counter"></h2>
-         <h3 id="counter2"></h3>
-         <h3 id="gamesPlayed"></h3>
-         <h3 id="Points"></h3>
-         <br /><br />
-         <p2 class="LightText">1 Try = 4 Points</p2><br />
-         <p2 class="LightText">2-5 Tries = 2 Points</p2><br />
-         <p2 class="LightText">More than 5 tries = 1 Point</p2>
 
-         <p id="gameCanceled" class="ErrorMsg"></p>
+         <input type="number" id="minValueInput" placeholder="Minimum" min="0" max="1000" />
+         <input type="number" id="maxValueInput" placeholder="Maxmum" min="1" max="9999" />
+         <input type="number" id="TryAmount" placeholder="Tries" min="1" max="100" /><br />
+         <button id="start">Start🎮</button>
+
+         <h3 id="TriesDisplay"></h3>
+         <h3 id="TotalPointsDisplay"></h3>
+         <h3 id="TotalGamesDisplay"></h3>
+         <h3 id="DifficultyDisplay"></h3>
+         <br />
+         <br />
+         <h2>Current Rank</h2>
+         <h3 id="RankDisplay">Unranked</h3>
+         <br />
+         <div>
+            <p2 class="LightText">Ranking System</p2> <br />
+            <p2 class="LightText">Beginner, Novice, Intermediate, Challenger, Adept, Expert, Master, Grandmaster, Legendary, Unstoppable!</p2>
+         </div>
+         <br /><br />
+         <p id="GameStatusMessage" class="ErrorMsg"></p>
 
          <script src="Scripts/Number Guess.js"></script>
       </div>
