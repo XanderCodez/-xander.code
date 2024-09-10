@@ -22,7 +22,7 @@ p {
 }
 
 input {
-   color: #e6e6e6;
+   color: #000000;
    background-color: #a8a8a8;
    border-radius: 10px;
    padding: 10px;
@@ -67,16 +67,44 @@ button:active {
 
 #textHere {
    font-size: 50px;
-   color: #9bb1b3;
-   text-shadow: 2px 2px 3px rgb(0, 20, 0);
+   color: #000000;
    font-weight: normal;
    margin-bottom: 15px;
    margin-top: 15px;
    letter-spacing: 2px;
 }
 
+#TotalPointsDisplay {
+   color: #a4c1ec;
+}
+
+#TotalGamesDisplay {
+   color: #4fbe81;
+}
+
+#DifficultyDisplay {
+   color: rgb(255, 69, 69);
+}
+
+#RankDisplay {
+   color: #884fbe;
+   font-size: 2rem;
+}
+
+#RankSysDisplay {
+   cursor: pointer;
+   transition: all 0.2s ease;
+   font-size: 1rem;
+}
+
+#RankSysDisplay :hover {
+   cursor: pointer;
+   color: #fffdfd;
+   transition: all 0.2s ease;
+}
+
 .LightText {
-   color: #000000b2;
+   color: #000000a2;
    font-weight: 100;
    font-size: 20px;
 }

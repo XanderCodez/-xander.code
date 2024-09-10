@@ -11,7 +11,7 @@ body {
    text-align: center;
    line-height: 1.75rem;
    padding-bottom: 12px;
-   text-shadow: 2px px 4px rgba(20, 20, 20, 0);
+   text-shadow: 2px 2px 4px rgba(20, 20, 20, 0);
    padding-top: 16px;
 }
 
@@ -45,7 +45,6 @@ input:hover {
 button {
    font-family: "Montserrat", sans-serif;
    background: rgba(80, 80, 80, 0.438);
-
    font-size: 20px;
    border-radius: 10px;
    border: none;
@@ -72,12 +71,40 @@ button:active {
 
 #textHere {
    font-size: 50px;
-   color: #9bb1b3;
+   color: #ffffff;
    text-shadow: 0px 2px 4px rgb(0, 20, 0);
    font-weight: normal;
    margin-bottom: 15px;
    margin-top: 15px;
    letter-spacing: 2px;
+}
+
+#TotalPointsDisplay {
+   color: #a4c1ec;
+}
+
+#TotalGamesDisplay {
+   color: #4fbe81;
+}
+
+#DifficultyDisplay {
+   color: rgb(255, 69, 69);
+}
+
+#RankDisplay {
+   color: #884fbe;
+   font-size: 2rem;
+}
+
+#RankSysDisplay {
+   cursor: pointer;
+   transition: all 0.2s ease;
+}
+
+#RankSysDisplay :hover {
+   cursor: pointer;
+   color: #fffdfd;
+   transition: all 0.2s ease;
 }
 
 .LightText {
