@@ -4,13 +4,19 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Xander</title>
-      <link rel="stylesheet" id="ThemeStyles" href="Styles/Style-Dark.css" />
+      <link rel="stylesheet" id="ThemeStyles" href="Styles/Dark.css" />
       <link rel="icon" type="image/png" href="Image/Icon.png" />
    </head>
+
+   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
    <body>
       <button id="darkTheme">Dark Theme</button>
       <button id="lightTheme">Light Theme</button> <br /><br />
-      <script src="Scripts/Themes.js"></script>
+      <script>
+         $("#darkTheme").click(() => {$("#ThemeStyles").attr("href", "Styles/Dark.css");}); // prettier-ignore
+         $("#lightTheme").click(() => {$("#ThemeStyles").attr("href", "Styles/Light.css");}); // prettier-ignore
+      </script>
 
       <div>
          <p id="msg">Hi, enter your name below🆔</p>
@@ -35,7 +41,6 @@
          <p id="error" class="ErrorMsg"></p>
 
          <script src="Scripts/Display Name.js"></script>
-         <script src="Scripts/CheckBox.js"></script>
       </div>
       <br />
 
@@ -49,7 +54,6 @@
          <button id="start">Start🎮</button>
 
          <h3 id="TriesDisplay"></h3>
-         <h3 id="BasePointsDisplay"></h3>
          <h3 id="TotalPointsDisplay"></h3>
          <h3 id="TotalGamesDisplay"></h3>
          <h3 id="DifficultyDisplay"></h3>
@@ -61,8 +65,12 @@
          <div>
             <a id="RankSysDisplay" onclick="showRankSys()">
                <p2 class="LightText">Ranking System🤔</p2>
+               <script>
+                  function showRankSys() {
+                     $("#RankingDisplay").text("Beginner, Novice, Intermediate, Challenger, Adept, Expert, Master, Grandmaster, Legendary and Unstoppable!");
+                  }
+               </script>
             </a>
-            <script src="Scripts/Rank Display.js"></script>
             <br />
             <br />
             <p2 class="LightText" id="RankingDisplay"></p2>
@@ -73,18 +81,5 @@
          <script src="Scripts/Number Guess.js"></script>
       </div>
       <br />
-
-      <div>
-         <h1>The looper🔁</h1>
-         <h3 class="LightText">Enter something and BOOM, looped!</h3>
-
-         <input id="inputlooped" placeholder="Type something cool here" />
-         <input type="number" id="loopNum" min="1" placeholder="How many times?" /> <br />
-         <button id="loopBtn">Loop!</button>
-         <button id="loopCLear">🆑</button>
-         <h2 id="loopedThing"></h2>
-
-         <script src="Scripts/inputLoop.js"></script>
-      </div>
    </body>
 </html>

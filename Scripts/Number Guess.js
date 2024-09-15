@@ -1,22 +1,21 @@
-//* any permanent data need to be globally scoped, because it resets when the game ends.
+// used jQuery
+// used Switches (Line: 154)
+// used 1 Object to store all variables
 
-let gameStats = {
+let gameData = {
    totalGames: 0,
    totalPoints: 0,
-   totalRank: document.getElementById("RankDisplay"),
-   basePointDisplay: document.getElementById("BasePointsDisplay")
+   triesDisplay: $("#TriesDisplay"),
+   totalPointsDisplay: $("#TotalPointsDisplay"),
+   statusMsgDisplay: $("#GameStatusMessage"),
+   difficultyDisplay: $("#DifficultyDisplay"),
+   rankDisplay: $("#RankDisplay")
 };
 
-let tryDiplay = document.getElementById("TriesDisplay");
-let totalGamesDisplay = document.getElementById("TotalGamesDisplay");
-let totalPointsDisplay = document.getElementById("TotalPointsDisplay");
-let gameStatusMessage = document.getElementById("GameStatusMessage");
-let difficultyDisplay = document.getElementById("DifficultyDisplay");
-
-document.getElementById("start").onclick = () => {
-   const MIN_VALUE = Number(document.getElementById("minValueInput").value);
-   const MAX_VALUE = Number(document.getElementById("maxValueInput").value);
-   const MAXIMUM_TRIES = Number(document.getElementById("TryAmount").value);
+$("#start").click(() => {
+   const MIN_VALUE = Number($("#minValueInput").val());
+   const MAX_VALUE = Number($("#maxValueInput").val());
+   const MAXIMUM_TRIES = Number($("#TryAmount").val());
 
    let consumedTries = 0;
    let targetNumber;
@@ -24,173 +23,184 @@ document.getElementById("start").onclick = () => {
 
    if (MAX_VALUE !== null && MAX_VALUE !== "" && MAX_VALUE !== 0) {
       if (MAXIMUM_TRIES !== null && MAXIMUM_TRIES !== "" && MAXIMUM_TRIES !== 0) {
-         if (MIN_VALUE >= MAX_VALUE) {
-            alert("Add higher value to the Maximum and try again🔄");
-            gameRunning = false;
-         } else {
-            targetNumber = Math.floor(Math.random() * (MAX_VALUE - MIN_VALUE + 1)) + MIN_VALUE;
-
+         if (MIN_VALUE !== MAX_VALUE && MAX_VALUE > MIN_VALUE) {
             gameRunning = true;
 
-            gameStatusMessage.textContent = "";
+            gameData.statusMsgDisplay.text("");
+
+            targetNumber = Math.floor(Math.random() * (MAX_VALUE - MIN_VALUE + 1)) + MIN_VALUE;
 
             console.log(`Minmum ${MIN_VALUE}`);
             console.log(`Maximum ${MAX_VALUE}`);
             console.log(`Max Tries ${MAXIMUM_TRIES}`);
             console.log(`Target Number: ${targetNumber}`);
+         } else {
+            alert("Add higher value to the Maximum and try again🔄");
+            gameRunning = false; // !Game Exit
          }
       } else {
          alert("Add Tries!");
-         gameRunning = false;
+         gameRunning = false; // !Game Exit
       }
 
       while (gameRunning) {
-         let guess = window.prompt(`Geuss a number between ${MIN_VALUE} - ${MAX_VALUE}🤔`);
+         let guess = window.prompt(`Guess a number between ${MIN_VALUE} - ${MAX_VALUE}🤔`);
          guess = Number(guess);
          if (isNaN(guess)) {
-            alert("Pleas add a number❗");
+            alert("Please add a number❗");
          } else if (guess < MIN_VALUE || guess > MAX_VALUE) {
-            alert(`Pleas enter a number between ${MIN_VALUE} - ${MAX_VALUE}❗`);
+            alert(`Please enter a number between ${MIN_VALUE} - ${MAX_VALUE}❗`);
          } else {
             consumedTries++;
 
-            let remainingTires = MAXIMUM_TRIES - consumedTries;
+            let remainingTries = MAXIMUM_TRIES - consumedTries;
 
-            console.log(`Remaining tries: ${remainingTires}`);
+            console.log(`Remaining tries: ${remainingTries}`);
             console.log(`Tries Used ${consumedTries}`);
 
             if (consumedTries <= MAXIMUM_TRIES) {
                if (guess < targetNumber) {
-                  alert(`a bit higher ⬆️, remaining tries: ${remainingTires}`);
+                  alert(`Above ${guess}, remaining tries: ${remainingTries}`);
                } else if (guess > targetNumber) {
-                  alert(`a bit lower ⬇️, remaining tries: ${remainingTires}`);
+                  alert(`Below ${guess}, remaining tries: ${remainingTries}`);
                } else {
                   if (consumedTries === 1) {
-                     tryDiplay.textContent = `Wow, it only took you once!, between ${MIN_VALUE} - ${MAX_VALUE}`;
+                     gameData.triesDisplay.text(`Wow, it only took you once!, between ${MIN_VALUE} - ${MAX_VALUE}`);
                   } else {
-                     tryDiplay.textContent = `${targetNumber} is the correct number, ${consumedTries} Tries between ${MIN_VALUE} - ${MAX_VALUE}`;
+                     gameData.triesDisplay.text(`${targetNumber} is the correct number, ${consumedTries} Tries between ${MIN_VALUE} - ${MAX_VALUE}`);
                   }
-                  gameStats.totalGames++;
-                  gameStats.totalPoints++;
-                  totalGamesDisplay.textContent = `Games Played: ${gameStats.totalGames}`;
-                  gameStatusMessage.textContent = "";
+                  gameRunning = false; // !Game Exit
 
-                  gameRunning = false;
+                  gameData.totalGames++;
+                  gameData.totalPoints++;
+                  gameData.statusMsgDisplay.text("");
+                  $("#TotalGamesDisplay").text(`Games Played: ${gameData.totalGames}`);
 
-                  //* Range diffrence between Max and Min (D = 10 ,C = 50, B = 100, A = 250)
+                  //* Range difference between Max and Min (D = 10 ,C = 50, B = 100, A = 250)
                   //* Base point for each range (D = 1, C = 2, B = 4, A = 6)
                   //* Extras, Each Range gets starts at base to 1
 
                   //Range A
                   if (MAX_VALUE - MIN_VALUE >= 250) {
-                     gameStats.totalPoints += 6;
+                     gameData.totalPoints += 6;
                      if (consumedTries === 1) {
-                        gameStats.totalPoints += 6;
-                        totalPointsDisplay.textContent = `Extra Points: 6, Total Points ${gameStats.totalPoints}`;
-                        difficultyDisplay.textContent = "Difficulty: Impossible";
+                        gameData.totalPoints += 6;
+                        gameData.totalPointsDisplay.text(`Extra Points: 6, Total Points ${gameData.totalPoints}`);
+                        gameData.difficultyDisplay.text("Difficulty: Impossible");
                      } else if (consumedTries <= 5) {
-                        gameStats.totalPoints += 5;
-                        totalPointsDisplay.textContent = `Extra Points: 5, Total Points ${gameStats.totalPoints}`;
-                        difficultyDisplay.textContent = "Difficulty: Impossible";
+                        gameData.totalPoints += 5;
+                        gameData.totalPointsDisplay.text(`Extra Points: 5, Total Points ${gameData.totalPoints}`);
+                        gameData.difficultyDisplay.text("Difficulty: Impossible");
                      } else if (consumedTries <= 10) {
-                        gameStats.totalPoints += 4;
-                        totalPointsDisplay.textContent = `Extra Points: 4, Total Points ${gameStats.totalPoints}`;
-                        difficultyDisplay.textContent = "Difficulty: Nightmare";
+                        gameData.totalPoints += 4;
+                        gameData.totalPointsDisplay.text(`Extra Points: 4, Total Points ${gameData.totalPoints}`);
+                        gameData.difficultyDisplay.text("Difficulty: Nightmare");
                      } else if (consumedTries <= 15) {
-                        gameStats.totalPoints += 3;
-                        totalPointsDisplay.textContent = `Extra Points: 3, Total Points ${gameStats.totalPoints}`;
-                        difficultyDisplay.textContent = "Difficulty: Nightmare";
+                        gameData.totalPoints += 3;
+                        gameData.totalPointsDisplay.text(`Extra Points: 3, Total Points ${gameData.totalPoints}`);
+                        gameData.difficultyDisplay.text("Difficulty: Nightmare");
                      } else if (consumedTries <= 20) {
-                        gameStats.totalPoints += 2;
-                        totalPointsDisplay.textContent = `Extra Points: 2, Total Points ${gameStats.totalPoints}`;
-                        difficultyDisplay.textContent = "Difficulty: Brutal";
+                        gameData.totalPoints += 2;
+                        gameData.totalPointsDisplay.text(`Extra Points: 2, Total Points ${gameData.totalPoints}`);
+                        gameData.difficultyDisplay.text("Difficulty: Brutal");
                      } else {
-                        totalPointsDisplay.textContent = `Extra Points: 0, Total Points ${gameStats.totalPoints}`;
-                        difficultyDisplay.textContent = "Difficulty: Brutal";
+                        gameData.totalPointsDisplay.text(`Extra Points: 0, Total Points ${gameData.totalPoints}`);
+                        gameData.difficultyDisplay.text("Difficulty: Brutal");
                      }
 
                      //Range B
                   } else if (MAX_VALUE - MIN_VALUE >= 100) {
-                     gameStats.totalPoints += 4;
+                     gameData.totalPoints += 4;
                      if (consumedTries === 1) {
-                        gameStats.totalPoints += 4;
-                        totalPointsDisplay.textContent = `Extra Points: 4, Total Points ${gameStats.totalPoints}`;
-                        difficultyDisplay.textContent = "Difficulty: Insane";
+                        gameData.totalPoints += 4;
+                        gameData.totalPointsDisplay.text(`Extra Points: 4, Total Points ${gameData.totalPoints}`);
+                        gameData.difficultyDisplay.text("Difficulty: Insane");
                      } else if (consumedTries <= 5) {
-                        gameStats.totalPoints += 3;
-                        totalPointsDisplay.textContent = `Extra Points: 3, Total Points ${gameStats.totalPoints}`;
-                        difficultyDisplay.textContent = "Difficulty: Extreme";
+                        gameData.totalPoints += 3;
+                        gameData.totalPointsDisplay.text(`Extra Points: 3, Total Points ${gameData.totalPoints}`);
+                        gameData.difficultyDisplay.text("Difficulty: Extreme");
                      } else if (consumedTries <= 10) {
-                        gameStats.totalPoints += 2;
-                        totalPointsDisplay.textContent = `Extra Points: 2, Total Points ${gameStats.totalPoints}`;
-                        difficultyDisplay.textContent = "Difficulty: Very Hard";
+                        gameData.totalPoints += 2;
+                        gameData.totalPointsDisplay.text(`Extra Points: 2, Total Points ${gameData.totalPoints}`);
+                        gameData.difficultyDisplay.text("Difficulty: Very Hard");
                      } else {
-                        totalPointsDisplay.textContent = `Extra Points: 0, Total Points ${gameStats.totalPoints}`;
+                        gameData.totalPointsDisplay.text(`Extra Points: 0, Total Points ${gameData.totalPoints}`);
                      }
 
                      //Range C
                   } else if (MAX_VALUE - MIN_VALUE >= 50) {
-                     gameStats.totalPoints += 2;
+                     gameData.totalPoints += 2;
                      if (consumedTries === 1) {
-                        gameStats.totalPoints += 2;
-                        totalPointsDisplay.textContent = `Extra Points: 2, Total Points ${gameStats.totalPoints}`;
-                        difficultyDisplay.textContent = "Difficulty: Hard";
+                        gameData.totalPoints += 2;
+                        gameData.totalPointsDisplay.text(`Extra Points: 2, Total Points ${gameData.totalPoints}`);
+                        gameData.difficultyDisplay.text("Difficulty: Hard");
                      } else if (consumedTries <= 5) {
-                        gameStats.totalPoints += 1;
-                        totalPointsDisplay.textContent = `Extra Points: 1, Total Points ${gameStats.totalPoints}`;
-                        difficultyDisplay.textContent = "Difficulty: Medium";
+                        gameData.totalPoints += 1;
+                        gameData.totalPointsDisplay.text(`Extra Points: 1, Total Points ${gameData.totalPoints}`);
+                        gameData.difficultyDisplay.text("Difficulty: Medium");
                      } else {
-                        totalPointsDisplay.textContent = `Extra Points: 0, Total Points ${gameStats.totalPoints}`;
-                        difficultyDisplay.textContent = "Difficulty: Easy";
+                        gameData.totalPointsDisplay.text(`Extra Points: 0, Total Points ${gameData.totalPoints}`);
+                        gameData.difficultyDisplay.text("Difficulty: Easy");
                      }
 
                      //Range D
                   } else {
-                     totalPointsDisplay.textContent = `Extra Points: 0, Total Points ${gameStats.totalPoints}`;
-                     difficultyDisplay.textContent = "Difficulty: Too Easy!";
+                     gameData.totalPointsDisplay.text(`Extra Points: 0, Total Points ${gameData.totalPoints}`);
+                     gameData.difficultyDisplay.text("Difficulty: Too Easy!");
                   }
 
                   //? Ranking system: Beginner, Novice, Intermediate, Challenger, Adept, Expert, Master, Grandmaster, Legendary, Unstoppable
 
-                  if (gameStats.totalPoints >= 100) {
-                     gameStats.totalRank.textContent = "Unstoppable";
-                  } else if (gameStats.totalPoints >= 90) {
-                     gameStats.totalRank.textContent = "Legendary";
-                  } else if (gameStats.totalPoints >= 80) {
-                     gameStats.totalRank.textContent = "Grandmaster";
-                  } else if (gameStats.totalPoints >= 70) {
-                     gameStats.totalRank.textContent = "Master";
-                  } else if (gameStats.totalPoints >= 60) {
-                     gameStats.totalRank.textContent = "Expert";
-                  } else if (gameStats.totalPoints >= 50) {
-                     gameStats.totalRank.textContent = "Adept";
-                  } else if (gameStats.totalPoints >= 40) {
-                     gameStats.totalRank.textContent = "Challenger";
-                  } else if (gameStats.totalPoints >= 30) {
-                     gameStats.totalRank.textContent = "Intermediate";
-                  } else if (gameStats.totalPoints >= 20) {
-                     gameStats.totalRank.textContent = "Novice";
-                  } else if (gameStats.totalPoints >= 10) {
-                     gameStats.totalRank.textContent = "Beginner";
-                  } else {
-                     gameStatusMessage.textContent = `You need 10 points or more to rank, Current Points: ${gameStats.totalPoints}`;
+                  switch (true) {
+                     case gameData.totalPoints >= 100:
+                        gameData.rankDisplay.text("Unstoppable");
+                        break;
+                     case gameData.totalPoints >= 90:
+                        gameData.rankDisplay.text("Legendary");
+                        break;
+                     case gameData.totalPoints >= 80:
+                        gameData.rankDisplay.text("Grandmaster");
+                        break;
+                     case gameData.totalPoints >= 70:
+                        gameData.rankDisplay.text("Master");
+                        break;
+                     case gameData.totalPoints >= 60:
+                        gameData.rankDisplay.text("Expert");
+                        break;
+                     case gameData.totalPoints >= 50:
+                        gameData.rankDisplay.text("Adept");
+                        break;
+                     case gameData.totalPoints >= 40:
+                        gameData.rankDisplay.text("Challenger");
+                        break;
+                     case gameData.totalPoints >= 30:
+                        gameData.rankDisplay.text("Intermediate");
+                        break;
+                     case gameData.totalPoints >= 20:
+                        gameData.rankDisplay.text("Novice");
+                        break;
+                     case gameData.totalPoints >= 10:
+                        gameData.rankDisplay.text("Beginner");
+                        break;
+                     default:
+                        gameData.statusMsgDisplay.text(`You need 10 points or more to rank, Current Points: ${gameData.totalPoints}`);
                   }
                }
             } else {
-               tryDiplay.textContent = `Maximum Limit Reached: ${MAXIMUM_TRIES}, Number was ${targetNumber} `;
-               totalPointsDisplay.textContent = `Points: ${gameStats.totalPoints}`;
+               gameData.triesDisplay.text(`Maximum Limit Reached: ${MAXIMUM_TRIES}, Number was ${targetNumber}`);
+               gameData.totalPointsDisplay.text(`Points: ${gameData.totalPoints}`);
 
-               gameRunning = false;
+               gameRunning = false; // !Game Exit
             }
          }
       }
    } else {
       alert("Something wrong , try again⚠️");
 
-      tryDiplay.textContent = "";
-      totalPointsDisplay.textContent = "";
-      gameStatusMessage.textContent = "Game Failed";
+      gameData.triesDisplay.text("");
+      gameData.totalPointsDisplay.text("");
+      gameData.statusMsgDisplay.text("Game Failed");
 
-      gameRunning = false;
+      gameRunning = false; // !Game Exit
    }
-};
+});
